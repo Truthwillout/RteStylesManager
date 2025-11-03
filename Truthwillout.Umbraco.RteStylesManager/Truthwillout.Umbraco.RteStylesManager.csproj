@@ -1,0 +1,84 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    
+    <!-- Package Information -->
+    <PackageId>Truthwillout.Umbraco.RteStylesManager</PackageId>
+    <Title>RTE Styles Manager</Title>
+    <Version>1.0.0</Version>
+    <Authors>Truthwillout</Authors>
+    <Company>Truthwillout</Company>
+    <Description>A visual dashboard for managing Umbraco Rich Text Editor styles and colors. Easily add, edit, and organize text styles with color pickers, live previews, and automatic CSS generation.</Description>
+    <Copyright>Copyright © Truthwillout 2025</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/truthwillout/umbraco-rte-styles-manager</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/truthwillout/umbraco-rte-styles-manager</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>umbraco;umbraco-marketplace;rte;tinymce;rich-text-editor;styles;colors;dashboard</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    
+    <!-- Build Settings -->
+    <ContentTargetFolders>content;contentFiles</ContentTargetFolders>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <!-- Umbraco Dependencies -->
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.0.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.0" />
+  </ItemGroup>
+
+  <!-- Include C# Source Files (Controllers and Composers) -->
+  <ItemGroup>
+    <Compile Include="Controllers\**\*.cs" />
+    <Compile Include="Composers\**\*.cs" />
+  </ItemGroup>
+
+  <!-- Include App_Plugins files as content -->
+  <ItemGroup>
+    <Content Include="App_Plugins\**\*">
+      <Pack>true</Pack>
+      <PackagePath>content\App_Plugins\%(RecursiveDir)%(Filename)%(Extension);contentFiles\any\any\App_Plugins\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Include wwwroot files -->
+  <ItemGroup>
+    <Content Include="wwwroot\**\*">
+      <Pack>true</Pack>
+      <PackagePath>content\wwwroot\%(RecursiveDir)%(Filename)%(Extension);contentFiles\any\any\wwwroot\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Include rte-style-formats.json in project root -->
+  <ItemGroup>
+    <Content Include="rte-style-formats.json">
+      <Pack>true</Pack>
+      <PackagePath>content\rte-style-formats.json;contentFiles\any\any\rte-style-formats.json</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Include package icon -->
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- Include README -->
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- Build targets file -->
+  <ItemGroup>
+    <None Include="build\Truthwillout.Umbraco.RteStylesManager.targets" Pack="true" PackagePath="build\" />
+  </ItemGroup>
+
+</Project>

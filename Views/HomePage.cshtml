@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = null;
+
+}
+<link href="/css/styles.css" rel="stylesheet">
+
+   
+
+@await Html.GetBlockListHtmlAsync(Model.PageBuilder, "RenderBlocks")

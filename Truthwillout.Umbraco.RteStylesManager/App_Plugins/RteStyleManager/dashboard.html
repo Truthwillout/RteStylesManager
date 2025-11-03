@@ -1,0 +1,200 @@
+<div ng-controller="RteStyleManager.DashboardController as vm">
+    <umb-box>
+        <umb-box-header title="RTE Style Manager" description="Manage rich text editor styles and colours"></umb-box-header>
+        <umb-box-content>
+            
+            <!-- Loading State -->
+            <div ng-if="vm.loading" class="text-center">
+                <i class="icon icon-loading"></i> Loading configuration...
+            </div>
+
+            <!-- Error Message -->
+            <div ng-if="vm.errorMessage" class="alert alert-error">
+                <strong>Error:</strong> {{vm.errorMessage}}
+            </div>
+
+            <!-- Success Message -->
+            <div ng-if="vm.successMessage" class="alert alert-success">
+                <strong>Success:</strong> {{vm.successMessage}}
+            </div>
+
+            <!-- Main Content -->
+            <div ng-if="!vm.loading && vm.config">
+                
+                <!-- Categories -->
+                <div ng-repeat="category in vm.config" class="style-category">
+                    <div class="category-header">
+                        <div class="category-title-group">
+                            <label>Category Name</label>
+                            <input type="text" 
+                                   ng-model="category.Title" 
+                                   class="category-title-input"
+                                   placeholder="e.g., Headers, Text">
+                        </div>
+                        <div class="category-delete-group">
+                            <label>&nbsp;</label>
+                            <button type="button" 
+                                    class="btn btn-danger" 
+                                    ng-click="vm.removeCategory($index)"
+                                    title="Remove category">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="category-items">
+                        
+                        <!-- Style Items -->
+                        <div ng-repeat="item in category.Items" class="style-item">
+                            <div class="item-wrapper">
+                                <div class="content-wrapper">
+                                    <div class="form-row">
+                                        
+                                        <!-- Title -->
+                                        <div class="form-group col-md-3">
+                                            <label>Title</label>
+                                            <input type="text" 
+                                                   class="form-control input-block-level"
+                                                   ng-model="item.Title" 
+                                                   placeholder="e.g., Heading 2 Red">
+                                        </div>
+
+                                        <!-- Block Type -->
+                                        <div class="form-group col-md-2">
+                                            <label>HTML Tag</label>
+                                            <select class="form-control" ng-model="item.Block">
+                                                <option value="h2">H2</option>
+                                                <option value="h3">H3</option>
+                                                <option value="h4">H4</option>
+                                                <option value="h5">H5</option>
+                                                <option value="h6">H6</option>
+                                                <option value="p">Paragraph</option>
+                                                <option value="strong">Strong</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- CSS Class -->
+                                        <div class="form-group col-md-3">
+                                            <label>CSS Class</label>
+                                            <input type="text" 
+                                                   class="form-control input-block-level"
+                                                   ng-model="item.Classes" 
+                                                   placeholder="e.g., red-heading">
+                                        </div>
+
+                                        <!-- Color -->
+                                        <div class="form-group col-md-3">
+                                            <label>Colour</label>
+                                            <div class="color-input-wrapper">
+                                                <input type="color" 
+                                                       ng-model="item.Color" 
+                                                       class="color-picker">
+                                                <input type="text" 
+                                                       ng-model="item.Color" 
+                                                       class="form-control color-text"
+                                                       placeholder="#000000">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Preview -->
+                                    <div class="style-preview" ng-if="item.Color">
+                                        <span ng-style="{'color': item.Color, 'font-weight': item.Block === 'strong' ? 'bold' : 'normal'}">
+                                            Preview: {{item.Title}}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="action-buttons">
+                                    <button type="button" 
+                                            class="btn btn-small action-btn"
+                                            ng-click="vm.moveItemUp(category, $index)"
+                                            ng-disabled="$index === 0"
+                                            title="Move up">
+                                        <i class="icon-arrow-up"></i>
+                                    </button>
+                                    <button type="button" 
+                                            class="btn btn-small action-btn"
+                                            ng-click="vm.moveItemDown(category, $index)"
+                                            ng-disabled="$index === category.Items.length - 1"
+                                            title="Move down">
+                                        <i class="icon-arrow-down"></i>
+                                    </button>
+                                    <button type="button" 
+                                            class="btn btn-danger btn-small action-btn"
+                                            ng-click="vm.removeItem(category, $index)"
+                                            title="Remove item">
+                                        <i class="icon-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add Item Button -->
+                        <div class="add-item-wrapper">
+                            <button type="button" 
+                                    class="btn btn-success btn-small"
+                                    ng-click="vm.addItem(category)">
+                                <i class="icon-add"></i> Add Style
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Category Button -->
+                <div class="add-category-wrapper">
+                    <button type="button" 
+                            class="btn btn-primary"
+                            ng-click="vm.addCategory()">
+                        <i class="icon-add"></i> Add Category
+                    </button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="button-bar">
+                    <button type="button" 
+                            class="btn btn-success"
+                            ng-click="vm.saveConfig()"
+                            ng-disabled="vm.saving">
+                        <i class="icon-save"></i> 
+                        <span ng-if="!vm.saving">Save Configuration</span>
+                        <span ng-if="vm.saving">Saving...</span>
+                    </button>
+
+                    <button type="button" 
+                            class="btn"
+                            ng-click="vm.loadConfig()"
+                            ng-disabled="vm.loading">
+                        <i class="icon-refresh"></i> Reload
+                    </button>
+
+                    <button type="button" 
+                            class="btn btn-info"
+                            ng-click="vm.viewGeneratedCss()">
+                        <i class="icon-code"></i> View Generated CSS
+                    </button>
+                </div>
+
+            </div>
+
+        </umb-box-content>
+    </umb-box>
+
+    <!-- CSS Preview Modal -->
+    <div ng-if="vm.showCssModal" class="css-modal-overlay" ng-click="vm.closeCssModal()">
+        <div class="css-modal" ng-click="$event.stopPropagation()">
+            <div class="css-modal-header">
+                <h3>Generated CSS</h3>
+                <button type="button" class="close-btn" ng-click="vm.closeCssModal()">×</button>
+            </div>
+            <div class="css-modal-content">
+                <pre>{{vm.generatedCss}}</pre>
+            </div>
+            <div class="css-modal-footer">
+                <button type="button" class="btn" ng-click="vm.closeCssModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</div>

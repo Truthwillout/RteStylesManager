@@ -1,0 +1,101 @@
+[
+  {
+    "title": "Headers",
+    "items": [
+      {
+        "title": "Heading 2 ",
+        "block": "h2",
+        "classes": null,
+        "color": "#000000"
+      },
+      {
+        "title": "Heading 2 red",
+        "block": "h2",
+        "classes": "red-heading",
+        "color": "#ff0000"
+      },
+      {
+        "title": "Heading 2 blue",
+        "block": "h2",
+        "classes": "blue-heading",
+        "color": "#0000ff"
+      },
+      {
+        "title": "Heading 3 ",
+        "block": "h3",
+        "classes": null,
+        "color": "#000000"
+      },
+      {
+        "title": "Heading 3 red",
+        "block": "h3",
+        "classes": "red-heading",
+        "color": "#ff0000"
+      },
+      {
+        "title": "Heading 3 blue ",
+        "block": "h3",
+        "classes": "blue-heading",
+        "color": "#0000ff"
+      },
+      {
+        "title": "Heading 4 ",
+        "block": "h4",
+        "classes": null,
+        "color": "#000000"
+      },
+      {
+        "title": "Heading 4 red",
+        "block": "h4",
+        "classes": "red-heading",
+        "color": "#ff0000"
+      },
+      {
+        "title": "Heading 4 blue",
+        "block": "h4",
+        "classes": "blue-heading",
+        "color": "#0000ff"
+      }
+    ]
+  },
+  {
+    "title": "Text",
+    "items": [
+      {
+        "title": "Intro Paragraph",
+        "block": "strong",
+        "classes": null,
+        "color": "#000000"
+      },
+      {
+        "title": "Paragraph Text",
+        "block": "p",
+        "classes": null,
+        "color": "#000000"
+      },
+      {
+        "title": "Paragraph Red Text",
+        "block": "p",
+        "classes": "red-text",
+        "color": "#ff0000"
+      },
+      {
+        "title": "Paragraph Blue Text",
+        "block": "p",
+        "classes": "blue-text",
+        "color": "#0000ff"
+      }
+    ]
+  },
+  {
+    "title": "This is my category",
+    "items": [
+      {
+        "title": "My new cool style",
+        "block": "h2",
+        "classes": "pink-heading",
+        "color": "#ff00ea"
+      }
+    ]
+  }
+]

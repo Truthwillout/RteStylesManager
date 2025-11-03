@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <ItemGroup>
+    <!-- Copy App_Plugins files to consuming project -->
+    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\contentFiles\any\any\App_Plugins\**\*.*">
+      <Link>App_Plugins\%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>App_Plugins\%(RecursiveDir)%(FileName)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+    
+    <!-- Copy wwwroot files to consuming project -->
+    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\contentFiles\any\any\wwwroot\**\*.*">
+      <Link>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+    
+    <!-- Copy rte-style-formats.json to project root -->
+    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)..\contentFiles\any\any\rte-style-formats.json" Condition="!Exists('$(ProjectDir)rte-style-formats.json')">
+      <Link>rte-style-formats.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>rte-style-formats.json</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
+
+</Project>

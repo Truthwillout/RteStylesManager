@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Core.PropertyEditors.ValueConverters
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListModel>
+@{
+    bool isFirst = true;
+
+    foreach(var block in Model) {
+        var data = block.Content;
+       
+            @await Html.PartialAsync("blocklist/Components/" + data.ContentType.Alias, data)
+
+    }
+}

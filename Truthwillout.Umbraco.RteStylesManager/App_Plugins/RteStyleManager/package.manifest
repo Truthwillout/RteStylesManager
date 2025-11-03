@@ -1,0 +1,26 @@
+{
+  "dashboards": [
+    {
+      "alias": "rteStyleManagerDashboard",
+      "view": "~/App_Plugins/RteStyleManager/dashboard.html",
+      "sections": [ "settings" ],
+      "weight": -10,
+      "access": [
+        {
+          "grant": "admin"
+        }
+      ],
+      "name": "RTE Styles Manager"
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/RteStyleManager/dashboard.controller.js",
+    "~/App_Plugins/RteStyleManager/rte-style.service.js"
+  ],
+  "css": [
+    "~/App_Plugins/RteStyleManager/dashboard.css"
+  ],
+  "languages": [
+    "~/App_Plugins/RteStyleManager/lang/en-US.xml"
+  ]
+}
