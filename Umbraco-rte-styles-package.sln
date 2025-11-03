@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
+VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco-rte-styles-package", "Umbraco-rte-styles-package.csproj", "{A8FBB47A-0C2D-4A46-9F8C-E5A851E9370F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Truthwillout.Umbraco.RteStylesManager", "Truthwillout.Umbraco.RteStylesManager\Truthwillout.Umbraco.RteStylesManager.csproj", "{37ABA3EC-7BD7-788B-07BB-BAAC2E4B93CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A8FBB47A-0C2D-4A46-9F8C-E5A851E9370F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8FBB47A-0C2D-4A46-9F8C-E5A851E9370F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8FBB47A-0C2D-4A46-9F8C-E5A851E9370F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37ABA3EC-7BD7-788B-07BB-BAAC2E4B93CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37ABA3EC-7BD7-788B-07BB-BAAC2E4B93CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37ABA3EC-7BD7-788B-07BB-BAAC2E4B93CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37ABA3EC-7BD7-788B-07BB-BAAC2E4B93CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
