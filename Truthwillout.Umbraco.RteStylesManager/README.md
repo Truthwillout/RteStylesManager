@@ -45,7 +45,7 @@ dotnet add package Truthwillout.Umbraco.RteStylesManager
 
 ## Documentation
 
-Full documentation available at: [GitHub Repository](https://github.com/yourusername/umbraco-rte-styles-manager)
+Full documentation available at: [GitHub Repository](https://github.com/Truthwillout/RteStylesManager)
 
 ## License
 

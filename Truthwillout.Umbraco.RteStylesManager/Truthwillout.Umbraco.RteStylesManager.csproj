@@ -5,6 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     
+    <!-- Disable default items to avoid duplicates -->
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    
+    <!-- Generate a DLL that consuming projects will reference -->
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
+    
     <!-- Package Information -->
     <PackageId>Truthwillout.Umbraco.RteStylesManager</PackageId>
     <Title>RTE Styles Manager</Title>
@@ -14,8 +21,8 @@
     <Description>A visual dashboard for managing Umbraco Rich Text Editor styles and colors. Easily add, edit, and organize text styles with color pickers, live previews, and automatic CSS generation.</Description>
     <Copyright>Copyright © Truthwillout 2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/truthwillout/umbraco-rte-styles-manager</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/truthwillout/umbraco-rte-styles-manager</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Truthwillout/RteStylesManager</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Truthwillout/RteStylesManager.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>umbraco;umbraco-marketplace;rte;tinymce;rich-text-editor;styles;colors;dashboard</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
@@ -28,16 +35,12 @@
 
   <!-- Umbraco Dependencies -->
   <ItemGroup>
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.0.0" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.0" />
-    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.0" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.11.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.11.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.11.0" />
   </ItemGroup>
 
-  <!-- Include C# Source Files (Controllers and Composers) -->
-  <ItemGroup>
-    <Compile Include="Controllers\**\*.cs" />
-    <Compile Include="Composers\**\*.cs" />
-  </ItemGroup>
+  <!-- C# files are included automatically by the SDK -->
 
   <!-- Include App_Plugins files as content -->
   <ItemGroup>

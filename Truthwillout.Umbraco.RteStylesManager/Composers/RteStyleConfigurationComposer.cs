@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using Umbraco.Cms.Core.Composing;
@@ -29,7 +30,7 @@ namespace Truthwillout.Composers
         public Task HandleAsync(UmbracoApplicationStartingNotification notification, CancellationToken cancellationToken)
         {
             var configPath = Path.Combine(_webHostEnvironment.ContentRootPath, "rte-style-formats.json");
-            
+
             if (File.Exists(configPath))
             {
                 try
@@ -37,7 +38,7 @@ namespace Truthwillout.Composers
                     var jsonContent = File.ReadAllText(configPath);
                     var obj = JsonSerializer.Deserialize<object>(jsonContent);
                     var jsonString = JsonSerializer.Serialize(obj, new JsonSerializerOptions { WriteIndented = false });
-                    
+
                     // Try to update configuration if it's a ConfigurationManager
                     if (_configuration is ConfigurationManager configManager)
                     {
